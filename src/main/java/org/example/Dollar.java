@@ -1,14 +1,24 @@
 package org.example;
 
 public class Dollar {
-
     public int amount;
 
     public Dollar(int amount) {
         this.amount = amount;
     }
 
-    public void times(int multiplier) {
-        this.amount *= multiplier;
+    public Dollar times(int multiplier) {
+        return new Dollar(amount * multiplier);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Dollar dollar = (Dollar) o;
+        return dollar.amount == amount;
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(amount);
+//    }
 }
