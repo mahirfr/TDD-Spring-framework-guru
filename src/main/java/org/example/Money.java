@@ -19,11 +19,12 @@ public class Money implements Expression {
     public static Money franc(int amount) {
         return new Franc(amount, "CHF");
     }
-
+    @Override
     public Money times(int multiplier) {
         return new Money(amount * multiplier, this.currency);
     }
 
+    @Override
     public Expression plus(Expression addend) {
         return new Sum(this, addend);
     }
