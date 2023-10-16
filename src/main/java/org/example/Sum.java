@@ -1,17 +1,23 @@
 package org.example;
 
 public class Sum implements Expression {
-    public Money augend;
-    public Money addend;
+    public Expression augmend;
+    public Expression addend;
 
-    public Sum(Money augend, Money addend) {
-        this.augend = augend;
+    public Sum(Expression augmend, Expression addend) {
+        this.augmend = augmend;
         this.addend = addend;
     }
 
     @Override
     public Money reduce(Bank bank, String to) {
-        int amount = this.augend.amount + this.addend.amount;
+        int amount =
+                this.augmend.reduce(bank, to).amount + this.addend.reduce(bank, to).amount;
         return new Money(amount, to);
+    }
+
+    @Override
+    public Expression plus(Expression addend) {
+        return null;
     }
 }
